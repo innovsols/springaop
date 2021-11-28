@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+
+   
+    <aop:aspectj-autoproxy />
+     <bean id = "myPointcutAspect" class = "org.example.springaop.AspectJAnnoConfig"/>
+<!-- 
+    <aop:config>
+        <aop:aspect id = "myAdvice" ref = "myPointcutAspect">-->
+
+<!-- Expression for specific method in Item class -->
+<!-- execution(* org.example.springaop.pointcuts.Item.printItemDetails()) -->
+<!-- Expression Any method in Item call with any no of parameters -->
+<!-- execution(* org.example.springaop.pointcuts.Item.*(..)) -->
+<!-- Expression whose access specifier is private and return type void -->
+<!-- execution(private void org.example.springaop.pointcuts.Item.*(..)) -->
+ <!--             <aop:pointcut id = "myPointcutExpression"
+                          expression = "execution(* org.example.springaop.pointcuts.Item.*(..))" />
+
+            <aop:before pointcut-ref = "myPointcutExpression" method = "printLogo"/>
+        </aop:aspect>
+    </aop:config>
+ -->
+    <bean id="itemBeanOne" class="org.example.springaop.pointcuts.Item">
+        <property name="itemId" value="102" />
+        <property name="itemName" value="Bread" />
+        <property name="itemPrice" value="8.25" />
+        <property name="availableQuantity" value="10" />
+    </bean>
+
+</beans>
